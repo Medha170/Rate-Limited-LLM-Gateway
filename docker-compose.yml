@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # Service A: Our Guardrailed FastAPI Gateway
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=redis-db
+      - REDIS_PORT=6379
+      - LLM_BASE_URL=http://host.docker.internal:11434/v1
+      - LLM_MODEL=llama3.1
+    # host.docker.internal allows our container to talk to Ollama running on your main machine
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - redis-db
+
+  # Service B: The Redis Database Notebook
+  redis-db:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
