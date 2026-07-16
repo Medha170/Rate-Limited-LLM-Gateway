@@ -1,0 +1,7 @@
+# Ignore the local environment file containing private keys
+.env
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+.pytest_cache/

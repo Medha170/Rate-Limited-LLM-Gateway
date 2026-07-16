@@ -9,8 +9,10 @@ class Settings(BaseSettings):
     # Note: Ollama doesn't actually require a real API key, but the client library expects one. 
     # We can pass any dummy string like "ollama".
     LLM_API_KEY: str = "ollama"
-    LLM_BASE_URL: str = "http://localhost:11434/v1" 
-    LLM_MODEL: str = "llama3.1" 
+    # LLM_BASE_URL: str = "http://localhost:11434/v1" 
+    LLM_BASE_URL: str = "https://openrouter.ai/api/v1"
+    # LLM_MODEL: str = "llama3.1" 
+    LLM_MODEL: str = "openrouter/free"
     
     # Budget configuration
     DAILY_REQUEST_LIMIT: int = 20
